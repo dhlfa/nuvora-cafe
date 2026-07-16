@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Serif Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-espresso: var(--espresso);
+  --color-espresso-hover: var(--espresso-hover);
+  --color-caramel: var(--caramel);
+  --color-caramel-hover: var(--caramel-hover);
+  --color-olive: var(--olive);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+
+  /* Legacy aliases for maximum code safety & zero compile breaking */
+  --color-espresso-dark: var(--espresso-hover);
+  --color-ivory: var(--surface);
+  --color-warm-white: var(--background);
+  --color-caramel-dark: var(--caramel-hover);
+  --color-charcoal: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-line: var(--border);
+}
+
+:root, .light {
+  --background: #FAF7F2;
+  --surface: #FFFCF8;
+  --surface-elevated: #FFFFFF;
+  --text-primary: #2A211C;
+  --text-secondary: #756B64;
+  --border: #E8DED3;
+  --espresso: #3B2418;
+  --espresso-hover: #2A1911;
+  --caramel: #B9773B;
+  --caramel-hover: #995E2C;
+  --olive: #737A58;
+  --success: #3F7652;
+  --danger: #B64A4A;
+  --warning: #B8782D;
+  --skeleton-base: #EEE8E1;
+  --skeleton-highlight: #F7F3EE;
+}
+
+.dark {
+  --background: #161310;
+  --surface: #201B17;
+  --surface-elevated: #28211C;
+  --text-primary: #F4EEE7;
+  --text-secondary: #B9ADA3;
+  --border: #3A3029;
+  --espresso: #D29A69;
+  --espresso-hover: #E0AA7A;
+  --caramel: #C7864A;
+  --caramel-hover: #DB9B5C;
+  --olive: #9BA17A;
+  --success: #70A982;
+  --danger: #D66D6D;
+  --warning: #D8A052;
+  --skeleton-base: #302923;
+  --skeleton-highlight: #3A312B;
+}
+
+@keyframes skeleton-fade {
+  0%, 100% {
+    opacity: 1;
+    background-color: var(--skeleton-base);
+  }
+  50% {
+    opacity: 0.6;
+    background-color: var(--skeleton-highlight);
+  }
+}
+
+.custom-skeleton {
+  background-color: var(--skeleton-base);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.reduce-motion) .custom-skeleton-animate {
+    animation: skeleton-fade 1.2s ease-in-out infinite;
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+/* Reduced Motion Settings override */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--caramel);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--espresso);
+}

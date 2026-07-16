@@ -1,0 +1,6 @@
+{
+  "name": "Nuvora Café",
+  "description": "Scan. Order. Enjoy. Modern premium café web application with digital self-ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
